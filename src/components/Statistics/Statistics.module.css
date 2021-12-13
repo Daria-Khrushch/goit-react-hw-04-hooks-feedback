@@ -1,0 +1,26 @@
+.title {
+  margin-left: 15px;
+  font-family: 'Patrick Hand', cursive;
+  color: hotpink;
+  text-shadow: 1px 0 1px aquamarine;
+  font-size: 50px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.statisticValues {
+  border-radius: 5px;
+  font-family: 'Patrick Hand', cursive;
+  width: 200px;
+  background-color: aquamarine;
+  display: block;
+  margin-left: 15px;
+  border-radius: 5px;
+}
+
+.value {
+  color: hotpink;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 1px 0 1px white;
+}

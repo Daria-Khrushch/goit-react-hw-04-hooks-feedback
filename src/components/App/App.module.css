@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  padding: 7px;
+}
+
+.title {
+  margin-left: 15px;
+  font-family: 'Patrick Hand', cursive;
+  color: hotpink;
+  text-shadow: 1px 0 1px aquamarine;
+  font-size: 50px;
+  margin-bottom: 0;
+  margin-top: 0;
+}

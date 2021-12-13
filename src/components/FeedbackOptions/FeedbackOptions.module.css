@@ -1,0 +1,15 @@
+.buttons {
+  font-family: 'Patrick Hand', cursive;
+  display: inline-flex;
+}
+
+.button {
+  margin-right: 15px;
+  border-radius: 5px;
+  border-color: hotpink;
+  background-color: aquamarine;
+  color: hotpink;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 1px 0 1px white;
+}

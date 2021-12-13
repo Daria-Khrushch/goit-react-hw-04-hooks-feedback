@@ -1,0 +1,8 @@
+.notification {
+  margin-left: 15px;
+  font-family: 'Patrick Hand', cursive;
+  color: hotpink;
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 1px 0 1px rgb(109, 108, 108);
+}
