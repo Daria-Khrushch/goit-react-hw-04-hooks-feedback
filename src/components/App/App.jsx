@@ -1,55 +1,59 @@
-import React from 'react';
+import { useState } from 'react';
 import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
 import Statistics from '../Statistics/Statistics';
 import s from './App.module.css';
 
-class Feedback extends React.Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+export default function Feedback() {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+
+  const total = () => {
+    return good + neutral + bad;
   };
 
-  handleFeedback = name => {
-    this.setState(prevState => {
-      return {
-        [name]: prevState[name] + 1,
-      };
-    });
+  const percentage = () => {
+    return Math.round((good / total()) * 100);
   };
 
-  countTotalFeedback = () => {
-    return Object.values(this.state).reduce((acc, value) => acc + value, 0);
+  const handleFeedback = options => {
+    switch (options) {
+      case 'good':
+        setGood(state => state + 1);
+        break;
+
+      case 'neutral':
+        setNeutral(state => state + 1);
+        break;
+
+      case 'bad':
+        setBad(state => state + 1);
+        break;
+
+      default:
+        return;
+    }
   };
 
-  countPositiveFeedbackPercentage = () => {
-    if (this.countTotalFeedback()) {
-      return ((this.state.good / this.countTotalFeedback()) * 100).toFixed();
-    } else return 0;
-  };
+  const statistics = () => [
+    ...Object.entries({ good, neutral, bad }),
+    ['total', total()],
+  ];
 
-  render() {
-    const options = Object.keys(this.state);
-    const total = this.countTotalFeedback();
-    const percentage = this.countPositiveFeedbackPercentage();
-    const statistics = Object.entries(this.state);
-    return (
-      <div>
-        <div className={s.Statistics}>
-          <h1 className={s.title}>Please leave feedback</h1>
-          <FeedbackOptions
-            handleFeedback={this.handleFeedback}
-            options={options}
-          />
-          <Statistics
-            statistics={statistics}
-            valueTotal={total}
-            valuePositiveFeedback={percentage}
-          />
-        </div>
+  return (
+    <div>
+      <div className={s.Statistics}>
+        <h1 className={s.title}>Please leave feedback</h1>
+        <FeedbackOptions
+          handleFeedback={handleFeedback}
+          options={['good', 'neutral', 'bad']}
+        />
+        <Statistics
+          statistics={statistics()}
+          valueTotal={total()}
+          valuePositiveFeedback={percentage()}
+        />
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default Feedback;
